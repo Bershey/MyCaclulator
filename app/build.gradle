@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+
     compileSdk 30
 
     defaultConfig {
@@ -14,6 +15,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildFeatures {
+        viewBinding  true
+        dataBinding true
+
     }
 
     buildTypes {

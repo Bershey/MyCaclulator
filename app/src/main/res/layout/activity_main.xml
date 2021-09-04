@@ -177,15 +177,22 @@
             android:text="+"
             android:onClick="onDigit"
             />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llFive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnEqual"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="="
-            />
+            android:onClick="onEqual"
+            android:text="=" />
     </LinearLayout>
-
-
 
 
 

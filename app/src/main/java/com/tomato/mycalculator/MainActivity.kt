@@ -11,6 +11,8 @@ import com.tomato.mycalculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    var lastNumeric = false
+    var lastDot = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +24,48 @@ class MainActivity : AppCompatActivity() {
 
     fun onDigit(view: View) {
         binding.tvInput.append((view as Button).text)
+        lastNumeric = true
+
+        if (binding.tvInput.text.contains(other = "1")) {
+            binding.tvInput.text = "Haha"
+        }
     }
 
     fun onClear(view: View) {
         binding.tvInput.text = ""
+        lastNumeric = false
+        lastDot = false
+
     }
+
+    fun onDecimalPoint(view: View) {
+        if (lastNumeric && !lastDot) {
+            binding.tvInput.append(".")
+            lastNumeric = false
+            lastDot = true
+
+        }
+    }
+
+    fun onOperator(view:View) {
+        if (lastNumeric && !isOperatorAdded(binding.tvInput.text.toString())) {
+            binding.tvInput.append((view as Button).text)
+            lastNumeric = false
+            lastDot = false
+        }
+    }
+
+    private fun isOperatorAdded(value: String): Boolean {
+
+        return if (value.startsWith("-")) {
+            false
+        } else {
+            (value.contains("/")
+                    || value.contains("*")
+                    || value.contains("-")
+                    || value.contains("+"))
+        }
+    }
+
 
 }
